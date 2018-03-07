@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get '/all-contacts' => 'contacts#seans_contacts'
+  get '/all_contacts' => 'contacts#seans_contacts'
 end

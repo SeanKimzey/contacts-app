@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  get '/all_contacts' => 'contacts#seans_contacts'
+  namespace :v1 do
+    get '/all_contacts' => 'contacts#seans_contacts'
+  end
 end

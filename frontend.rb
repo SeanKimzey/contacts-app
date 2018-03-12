@@ -1,5 +1,9 @@
 require 'unirest'
 
-response = Unirest.get("http://localhost:3000/all_contacts")
+response = Unirest.get("http://localhost:3000/v1/show_contacts")
 
-end
+puts JSON.pretty_generate(response.body)
+
+
+
+

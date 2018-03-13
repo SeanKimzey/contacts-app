@@ -15,9 +15,11 @@ class V1::ContactsController < ApplicationController
  
     contact1 = Contact.new(
       first_name: params[:the_first_name],
+      middle_name: params[:the_middle_name],
       last_name: params[:the_last_name],
       email: params[:the_email],
-      phone_number: params[:the_phone_number]
+      phone_number: params[:the_phone_number],
+      bio: params[:the_bio]
     )
     contact1.save
     render json: contact1.as_json

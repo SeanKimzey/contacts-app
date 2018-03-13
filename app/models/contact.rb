@@ -7,7 +7,9 @@ class Contact < ApplicationRecord
       last_name: last_name,
       email: email,
       Created_on: friendly_created_on,
-      full_name: full_name
+      full_name: full_name,
+      middle_name: middle_name,
+      bio: bio
     }
   end
 

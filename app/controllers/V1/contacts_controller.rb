@@ -45,7 +45,7 @@ class V1::ContactsController < ApplicationController
   def destroy
     contact = Contact.find(params[:id])
     contact.destroy
-    render json: {message: "Successfully destroyed contact ##{contact.id}"}
+    render json: {message: "Successfully destroyed contact #{contact.full_name}"}
   end
 
 

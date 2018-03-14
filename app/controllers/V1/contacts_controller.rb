@@ -5,44 +5,47 @@ class V1::ContactsController < ApplicationController
     render json: contacts.as_json
   end
 
-  def show
-    the_id = params[:id]
-    contact1 = Contact.find_by(id: the_id)
-    render json: contact1.as_json
+  def create
+    contact = Contact.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      middle_name: params[:middle_name],
+      bio: params[:bio],
+      email: params[:email],
+      phone_number: params[:phone_number]
+      )
+    if contact.save
+      render json: contact.as_json
+    else
+      render json: {errors: contact.errors.full_messages}
+    end
   end
 
-  def create
- 
-    contact1 = Contact.new(
-      first_name: params[:the_first_name],
-      middle_name: params[:the_middle_name],
-      last_name: params[:the_last_name],
-      email: params[:the_email],
-      phone_number: params[:the_phone_number],
-      bio: params[:the_bio]
-    )
-    contact1.save
-    render json: contact1.as_json
+  def show
+    contact = Contact.find(params[:id])
+    render json: contact.as_json
   end
 
   def update
-    
-    the_id = params[:id]
-    contact1 = Contact.find_by(id: the_id)
-    contact1.first_name = params[:the_first_name]
-    contact1.last_name = params[:the_last_name]
-    contact1.email = params[:the_email]
-    contact1.phone_number = params[:the_phone_number]
-    contact1.save
-    render json: contact1.as_json
+    contact = Contact.find(params[:id])
+
+    contact.first_name = params[:first_name] || contact.first_name
+    contact.middle_name = params[:middle_name] || contact.middle_name
+    contact.bio = params[:bio] || contact.bio
+    contact.last_name = params[:last_name] || contact.last_name
+    contact.email = params[:email] || contact.email
+    contact.phone_number = params[:phone_number] || contact.phone_number
+    if contact.save
+      render json: contact.as_json
+    else
+      render json: {errors: contact.errors.full_messages}
+    end
   end
 
   def destroy
-   
-    the_id = params[:id]
-    contact1 = Contact.find_by(id: the_id)
-    contact1.destroy
-    render json: {message: "You deleted the contact with id of #{the_id}"}
+    contact = Contact.find(params[:id])
+    contact.destroy
+    render json: {message: "Successfully destroyed contact ##{contact.id}"}
   end
 
 

@@ -3,13 +3,14 @@ class Contact < ApplicationRecord
   def as_json
     {
       id: id,
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
+      First_name: first_name,
+      Middle_name: middle_name,
+      Last_name: last_name,
+      Email: email,
+      Full_name: full_name,
+      Bio: bio,
       Created_on: friendly_created_on,
-      full_name: full_name,
-      middle_name: middle_name,
-      bio: bio
+      Phone_Number_Japan: phone_number_with_extension
     }
   end
 

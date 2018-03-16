@@ -1,7 +1,7 @@
 class V1::ContactsController < ApplicationController
   
   def index
-    contacts = Contact.all.order(:id).where("first_name LIKE ?", "%top%")
+    contacts = Contact.all.order(:id).where("first_name LIKE ?", "%%")
     render json: contacts.as_json
   end
 
